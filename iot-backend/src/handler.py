@@ -59,7 +59,7 @@ def createEvent(data, decodedPayload):
         'payloadRaw': data['payload'],
         'createdAt': int(time.time()),
     }
-    eventItem |= decodedPayload # Juntamos eventItem y decodedPayload
+    eventItem = {**eventItem, **decodedPayload} # Juntamos eventItem y decodedPayload
     eventsTable = dynamodb.Table(EVENTS_TABLE)
     print(eventItem)
     eventsTable.put_item(Item=eventItem)
