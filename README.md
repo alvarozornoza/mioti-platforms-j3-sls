@@ -42,3 +42,11 @@ plugins:
 ```
 
 serverless offline
+
+## IOT project
+
+### Install dependencies
+
+```
+pip3 install --platform manylinux2014_x86_64 --target=iot-backend/src/vendor --implementation cp --python 3.8 --only-binary=:all: -r requirements.txt
+```
