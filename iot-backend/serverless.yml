@@ -1,0 +1,71 @@
+service: iot-backend
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: eu-west-3
+  stage: dev
+  environment:
+    DEVICES_TABLE: ${self:service}-${sls:stage}-devices
+    EVENTS_TABLE: ${self:service}-${sls:stage}-events
+    ACCOUNT_SID: 
+    ACCOUNT_TOKEN : 
+    
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 
+        - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DEVICES_TABLE}"
+        - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.EVENTS_TABLE}"
+
+functions:
+  parseEvent:
+    handler: src/handler.parseEvent
+    events:
+      - httpApi:
+          path: /parseEvent
+          method: post
+
+resources:
+  Resources:
+    DevicesTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: deviceId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: deviceId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.DEVICES_TABLE}
+
+    EventsTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: deviceId
+            AttributeType: S
+          - AttributeName: uuid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: deviceId
+            KeyType: HASH
+          - AttributeName: uuid
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.EVENTS_TABLE}
+
+plugins:
+  - serverless-offline
+
+# pip install --platform manylinux2014_x86_64 --target=iot-backend --implementation cp --python 3.10 --only-binary=:all: --upgrade twilio
