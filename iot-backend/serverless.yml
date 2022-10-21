@@ -67,5 +67,3 @@ resources:
 
 plugins:
   - serverless-offline
-
-# pip install --platform manylinux2014_x86_64 --target=iot-backend --implementation cp --python 3.10 --only-binary=:all: --upgrade twilio
