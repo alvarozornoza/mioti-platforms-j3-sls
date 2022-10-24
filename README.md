@@ -8,6 +8,7 @@ wsl --install -d Ubuntu-20.04
 
 ## Instalar AWS Cli
 ```
+sudo apt-get update
 sudo apt install awscli
 aws configure
 ```
@@ -45,11 +46,12 @@ serverless offline
 
 ## IOT project
 
+### Abrir VSCode la ruta 
+\\wsl$\Ubuntu-20.04\home\
+
 ### Install dependencies
 
 ```
 cd iot-backend
 pip3 install --platform manylinux2014_x86_64 --target=/src/vendor --implementation cp --python 3.8 --only-binary=:all: -r requirements.txt
 ```
-
-## Abrir VSCode la ruta \\wsl$\Ubuntu-20.04\home\
