@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "5b77462c-ee5d-4f00-be0e-30dff260277b",
+		"name": "Todos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/todos",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update todo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"test2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/todos/209fc5b0-4d83-11ed-8937-0e5ea657a578",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"todos",
+						"209fc5b0-4d83-11ed-8937-0e5ea657a578"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List one todo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/todos/89e5780a-4d81-11ed-b970-5ebd85b2a66b",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"todos",
+						"89e5780a-4d81-11ed-b970-5ebd85b2a66b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all todos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/todos",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/todos/89e5780a-4d81-11ed-b970-5ebd85b2a66b",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"todos",
+						"89e5780a-4d81-11ed-b970-5ebd85b2a66b"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "https://bo8ndr52i6.execute-api.eu-west-3.amazonaws.com",
+			"type": "default"
+		}
+	]
+}
