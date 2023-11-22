@@ -16,7 +16,7 @@ EVENTS_TABLE = os.environ['EVENTS_TABLE']
 DEFAULT_NUMBER = '+34666666666'
 ACCOUNT_SID = os.environ['ACCOUNT_SID']
 ACCOUNT_TOKEN = os.environ['ACCOUNT_TOKEN']
-TWIML_BIN = 'https://handler.twilio.com/twiml/EH31757389a99a416ea22e0237f056775f?Name'
+TWIML_BIN_1 = 'https://handler.twilio.com/twiml/EH31757389a99a416ea22e0237f056775f?Name='
 
 def parseEvent(event, context):
     data = json.loads(event['body'])
@@ -113,5 +113,5 @@ def makeCall(phoneNumber, deviceName):
     client.calls.create(
         to = phoneNumber,
         from_ = '+19259684965',
-        url = TWIML_BIN + deviceName
+        url = TWIML_BIN_1 + deviceName
     )
