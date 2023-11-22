@@ -1,9 +1,9 @@
-service: iot-backend
+service: iot-backend-alvaro
 frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.11
   region: eu-west-3
   stage: dev
   environment:
@@ -64,6 +64,3 @@ resources:
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.EVENTS_TABLE}
-
-plugins:
-  - serverless-offline
